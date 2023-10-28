@@ -12,7 +12,7 @@
 <body>
     <div class="container mt-4">
         <h2>Pemprogaraman 3 2023</h2>
-        <a href="/" class="btn btn-primary mb-3">Kembali</a>
+        <a href="index.php" class="btn btn-primary mb-3">Kembali</a>
         <h5>Laporan Transaksi</h5>
         <table class="table table-bordered">
             <thead>

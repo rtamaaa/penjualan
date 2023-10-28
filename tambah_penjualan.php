@@ -37,7 +37,7 @@
         $a = mysqli_query($koneksi,"insert into penjualan values('','$Tanggal','$Nama','$kode_barang','$qty')");
         if($a){
             //mengalihkan ke halaman kembali
-            header("tampil_penjualan.php");
+            header("location:tampil_penjualan.php");
         }else{
             echo "error". mysqli_error($koneksi);
         }
@@ -45,7 +45,7 @@
 ?>
 <body>
     <div class="container mt-4">
-        <a href="list_penjualan.php" class="btn btn-primary">Kembali</a>
+        <a href="tampil_penjualan.php" class="btn btn-primary">Kembali</a>
         <h3 class="mt-3">TAMBAH DATA PENJUALAN</h3>
         <form method="POST">
             <div class="mb-3">

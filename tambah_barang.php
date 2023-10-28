@@ -8,7 +8,7 @@
 <body>
     <div class="container mt-4">
         <br/>
-        <a class="btn btn-secondary mb-3" href="index.php">KEMBALI</a>
+        <a class="btn btn-secondary mb-3" href="tampil_barang.php">KEMBALI</a>
         <h3>TAMBAH DATA BARANG</h3>
         <?php
             // Koneksi ke database
