@@ -1,5 +1,13 @@
 <?php
 include 'koneksi.php';
+session_start();
+
+if ($_SESSION['level'] !== "admin") {
+     // Jika tidak login, redirect ke halaman login atau halaman lain
+     header("location: logout.php");
+     exit();
+ }
+
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     $id_user = $_GET['id'];

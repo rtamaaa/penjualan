@@ -14,6 +14,14 @@
             // Koneksi ke database
             include 'koneksi.php';
 
+            session_start();
+
+                if ($_SESSION['level'] !== "admin") {
+                    // Jika tidak login, redirect ke halaman login atau halaman lain
+                    header("location: logout.php");
+                    exit();
+ }
+
             // Menangkap data yang dikirim dari form
             if (isset($_POST["save"])) {
                 $Nama = $_POST["Nama"];
@@ -21,8 +29,10 @@
                 $Level = $_POST["level"];
                 $Status = $_POST["status"];
 
+                $hashedPassword = md5($password);
+
                 // Input data ke database
-                $query = "INSERT INTO user (Nama, Password, level, status) VALUES ('$Nama', '$Password', '$Level', '$Status')";
+                $query = "INSERT INTO user (Nama, Password, level, status) VALUES ('$Nama', '$hashedPassword', '$Level', '$Status')";
                 $result = mysqli_query($koneksi, $query);
 
                 if ($result) {
@@ -46,10 +56,10 @@
                 <label for="level" class="form-label">Level</label>
                 <select class="form-select" id="level" name="level" required>
                     <option value="">---PILIH---</option>
-                    <option value="1">Admin</option>
-                    <option value="2">Staff</option>
-                    <option value="3">Spv</option>
-                    <option value="4">Mgr</option>
+                    <option value="admin">Admin</option>
+                    <option value="staff">Staff</option>
+                    <option value="spv">Spv</option>
+                    <option value="mgr">Mgr</option>
                 </select>
             </div>
             <div class="mb-3">

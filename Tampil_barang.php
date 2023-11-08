@@ -19,6 +19,17 @@
             <tbody>
                 <?php
                 include 'koneksi.php';
+
+                
+                session_start();
+
+                if (!isset($_SESSION['level']) || ($_SESSION['level'] !== "admin" && $_SESSION['level'] !== "staff")) {
+                    // Jika tidak login atau level bukan admin atau staff, redirect ke halaman logout
+                    header("location: logout.php");
+                    exit();
+                }
+
+
                 $no = 1;
                 $data = mysqli_query($koneksi, "select * from barang");
                 while ($d = mysqli_fetch_array($data)) {
@@ -29,12 +40,7 @@
                         <td><?php echo $d['nama_barang']; ?></td>
                         <td><?php echo $d['harga']; ?></td>
                         <td><?php echo $d['qty']; ?></td>
-                        <td>
-                            <a class="btn btn-warning btn-sm" href="edit_user.php?id=<?php echo $d['id_user']; ?>">EDIT</a>
-                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusModal<?php echo $d['id_user']; ?>">
-                                Hapus
-                            </button>
-                        </td>
+                        
                         <!-- Modal Konfirmasi Hapus
                     <div class="modal fade" id="hapusModal<?php echo $d['id_user']; ?>" tabindex="-1" aria-labelledby="hapusModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -48,12 +54,12 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                    <!-- Tombol Hapus di dalam Modal -->
-                                    <a href="?id=<?php echo $d['id_user']; ?>" class="btn btn-danger">Hapus</a>
+                                     Tombol Hapus di dalam Modal 
+                                    <a href="?id=<?php echo $d['id_user']; ?>" class="btn btn-danger">Hapus</a>-->
                                 </div>
                             </div>
                         </div>
-                    </div> -->
+                    </div> 
                     
                     </tr>
                     <?php

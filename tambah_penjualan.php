@@ -27,6 +27,14 @@
 <?php
     //koneksi database
     include 'koneksi.php';
+
+    session_start();
+
+                if (!isset($_SESSION['level']) || ($_SESSION['level'] !== "admin" && $_SESSION['level'] !== "staff")) {
+                    // Jika tidak login atau level bukan admin atau staff, redirect ke halaman logout
+                    header("location: logout.php");
+                    exit();
+                }
     //menangkap data yang dikirim dari form
     if (isset($_POST["save"])) {
         $Tanggal = $_POST['tanggal_penjualan'];

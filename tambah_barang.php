@@ -1,3 +1,4 @@
+
 <!DOCTYPE html> 
 <html>
 <head>
@@ -14,6 +15,13 @@
             // Koneksi ke database
             include 'koneksi.php';
 
+            session_start();
+
+                if (!isset($_SESSION['level']) || ($_SESSION['level'] !== "admin" && $_SESSION['level'] !== "staff")) {
+                    // Jika tidak login atau level bukan admin atau staff, redirect ke halaman logout
+                    header("location: logout.php");
+                    exit();
+                }
             // Menangkap data yang dikirim dari form
             if (isset($_POST["save"])) {
                 $kode_barang = $_POST["kode_barang"];

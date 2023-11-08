@@ -22,6 +22,15 @@
             <tbody>
                 <?php
                 include 'koneksi.php';
+
+                session_start();
+
+                if (!isset($_SESSION['level']) || ($_SESSION['level'] !== "admin" && $_SESSION['level'] !== "staff")) {
+                    // Jika tidak login atau level bukan admin atau staff, redirect ke halaman logout
+                    header("location: logout.php");
+                    exit();
+                }
+
                 $no = 1;
                 $data = mysqli_query($koneksi, "select * from penjualan");
                 while ($d = mysqli_fetch_array($data)) {
