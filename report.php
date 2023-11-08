@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pemprograman3.com</title>
+    <title>pemprograman 3</title>
     <!-- Add Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
     <div class="container mt-4">
-        <h2>Pemprogaraman 3 2023</h2>
+        <h2>Pemprograman 3 2023</h2>
         <a href="index.php" class="btn btn-primary mb-3">Kembali</a>
         <h5>Laporan Transaksi</h5>
         <table class="table table-bordered">
@@ -43,7 +43,7 @@
                 JOIN level L ON M.id_level = L.id_level 
                 ");
 
-                while ($d = mysqli_fetch_array($data)) {
+                while ($d = mysqli_fetch_array($data)) { 
                     $totalHarga = $d['harga'] * $d['qty'];
 
                     if ($totalHarga > 100000) {
