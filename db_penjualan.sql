@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2023 at 10:12 AM
+-- Generation Time: Nov 11, 2023 at 03:13 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -102,7 +102,7 @@ CREATE TABLE `member` (
 
 INSERT INTO `member` (`kode_pelanggan`, `nama_pelanggan`, `id_level`) VALUES
 ('PL0001', 'mahmud', 1),
-('PL0002', 'roni', 2);
+('PL0002', 'roni', 3);
 
 -- --------------------------------------------------------
 
@@ -123,7 +123,8 @@ CREATE TABLE `penjualan` (
 --
 
 INSERT INTO `penjualan` (`id_penjualan`, `tgl_penjualan`, `nama_pelanggan`, `kode_barang`, `qty`) VALUES
-(2, '2023-10-28', 'roni', 'br0001', 12);
+(2, '2023-10-28', 'roni', 'br0001', 12),
+(3, '2023-10-28', 'mahmud', 'br0001', 200);
 
 -- --------------------------------------------------------
 
@@ -162,8 +163,8 @@ INSERT INTO `transaksi` (`tgl_transaksi`, `no_transaksi`, `jenis_transaksi`, `ko
 CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
-  `password` varchar(16) NOT NULL,
-  `level` int(11) NOT NULL,
+  `password` varchar(60) NOT NULL,
+  `level` varchar(11) NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -172,10 +173,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `nama`, `password`, `level`, `status`) VALUES
-(2, 'parman', '123', 2, 0),
-(5, 'surya', '123', 1, 1),
-(6, 'wahyudi', '123', 1, 1),
-(7, 'roni', '123', 1, 1);
+(1, 'roni', '202cb962ac59075b964b07152d234b70', 'admin', 1),
+(2, 'beni', '698d51a19d8a121ce581499d7b701668', 'admin', 1),
+(3, 'danu', 'bcbe3365e6ac95ea2c0343a2395834dd', 'staff', 1);
 
 --
 -- Indexes for dumped tables
@@ -238,13 +238,13 @@ ALTER TABLE `level`
 -- AUTO_INCREMENT for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
